@@ -1,4 +1,20 @@
-const makeFiboGenerator = undefined;
+const makeFiboGenerator = function (firstNum,secondNum){
+  if(!firstNum  && !secondNum){
+    firstNum=0;
+    secondNum=1;
+  }
+  if(!secondNum){
+    secondNum = firstNum;
+    firstNum = 0;
+  }
+  return function(){
+    let result = firstNum;
+    let sum  = firstNum + secondNum;
+    firstNum = secondNum;
+    secondNum = sum;
+    return result;
+  }
+}
 
 const compose = function(func1,func2){
   return function (args1,args2){
@@ -6,6 +22,7 @@ const compose = function(func1,func2){
     return func1(firstAns);
   }
 }
+
 const curry = function(func1,args1){
   return function(args2,args3){
     return func1(args1,args2,args3);
