@@ -30,19 +30,12 @@ const curry = function(func1,args1){
 }
 
 const makeDeltaTracker = function(number){
-  let object = {old:number,delta:0,new:number};
-  const tracker = function(number2){
-    number = object.new;
-    if(number2 > 0){
-      return object = {old:number,delta:number2,new:number+number2};
-    }
-    if(number2 < 0){
-      return object = {old:number,delta:number2,new:number+number2};
-    } else{
-      return object ={old:number,delta:0,new:number};
-    }
+  return function(number2){
+    if(!number2){number2=0}
+    let object = {old:number,delta:number2,new:number+number2}
+    number = number + number2;
+    return object;
   }
-  return tracker;
 }
 
 const makeCycler = function(array){
