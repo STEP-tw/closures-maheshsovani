@@ -1,10 +1,14 @@
-const curry = undefined;
 const makeFiboGenerator = undefined;
 
 const compose = function(func1,func2){
   return function (args1,args2){
     let firstAns = func2(args1,args2);
     return func1(firstAns);
+  }
+}
+const curry = function(func1,args1){
+  return function(args2,args3){
+    return func1(args1,args2,args3);
   }
 }
 
