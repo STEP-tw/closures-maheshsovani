@@ -1,7 +1,22 @@
 const curry = undefined;
 const compose = undefined;
 const makeFiboGenerator = undefined;
-const makeDeltaTracker = undefined;
+
+const makeDeltaTracker = function(number){
+  let object = {old:number,delta:0,new:number};
+  const tracker = function(number2){
+    number = object.new;
+    if(number2 > 0){
+      return object = {old:number,delta:number2,new:number+number2};
+    }
+    if(number2 < 0){
+      return object = {old:number,delta:number2,new:number+number2};
+    } else{
+      return object ={old:number,delta:0,new:number};
+    }
+  }
+  return tracker;
+}
 
 const makeCycler = function(array){
   let newArray = array.slice(0);
