@@ -1,20 +1,25 @@
-const makeConstant = undefined;
-const makeDeltaTracker = undefined;
-const makeCycler = undefined;
 const curry = undefined;
 const compose = undefined;
+const makeFiboGenerator = undefined;
+const makeDeltaTracker = undefined;
 
-const makeFiboGenerator = function (num1,num2){
-  let lastSecondTerm = num1;
-  let previousTerm = num2;
-  let currentTerm = 0;
-  const fibo = function(){
-    currentTerm = previousTerm+lastSecondTerm;
-    lastSecondTerm = previousTerm;
-    previousTerm = currentTerm;
-    return(currentTerm);
+const makeCycler = function(array){
+  let newArray = array.slice(0);
+  let count = -1;
+  const cycler = function(){
+    count = count +1;
+    if(count == newArray.length){
+      count = 0
+    }
+    return newArray[count]
   }
-  return fibo;
+  return cycler;
+}
+
+const makeConstant = function (argument){
+  return function (){
+    return argument;
+  }
 }
 
 const makeCounterFromZero=function(){
@@ -23,6 +28,7 @@ const makeCounterFromZero=function(){
     return counter ++;
   }
 }
+
 const makeCounterFromN=function(counterStartNumber){
   let counter = counterStartNumber;
   return function(){
