@@ -1,6 +1,12 @@
 const curry = undefined;
-const compose = undefined;
 const makeFiboGenerator = undefined;
+
+const compose = function(func1,func2){
+  return function (args1,args2){
+    let firstAns = func2(args1,args2);
+    return func1(firstAns);
+  }
+}
 
 const makeDeltaTracker = function(number){
   let object = {old:number,delta:0,new:number};
